@@ -8,6 +8,28 @@
 
 :root {
 	--dark-color: rgb(9, 110, 48);
+	--primary: #fff;
+	--bg-color: rgb(5, 53, 61);
+	--bg-envelope-color: #f5edd1;
+	--envelope-tab: #ecdeb8;
+	--envelope-cover: #e6cfa7;
+	--shadow-color: rgba(0, 0, 0, 0.2);
+	--txt-color: #444;
+	--heart-color: rgb(255, 0, 0);
+}
+
+.gradient {
+	position: absolute;
+	z-index: 0;
+	background-image: radial-gradient(
+		circle 400px at -2% 10%,
+		rgb(228, 228, 120),
+		lightyellow,
+		rgba(0, 255, 255, 0)
+	);
+	background-size: cover;
+	height: 100vh;
+	width: 100%;
 }
 
 body {
@@ -15,17 +37,138 @@ body {
 	align-items: flex-end;
 	justify-content: center;
 	min-height: 100vh;
-	background-color: rgb(110, 185, 255);
+	background-color: #9edcf5;
+	background-image: url('assets/images/clouds.jpg');
+	background-size: 120%;
+	animation: revolution 50s linear infinite;
 	overflow: hidden;
 	perspective: 1000px;
 }
 
-// .grass-ground {
-// 	position: absolute;
-// 	height: 350px;
-// 	width: 100%;
-// 	background-color: var(--dark-color);
-// }
+.container {
+	z-index: 1;
+	position: absolute;
+	height: 100vh;
+	display: grid;
+	place-items: center;
+
+	transform: scale(0.6) translateY(55vh) translateX(20vh) rotateX(30deg)
+		rotateY(20deg) rotate(-20deg);
+	transition: transform 0.5s ease-in-out;
+
+	animation-name: envelope-fall;
+	animation-duration: 9s;
+	animation-timing-function: linear;
+	animation-iteration-count: 1;
+	animation-play-state: running;
+}
+
+.container.zoomed {
+	transform: scale(1) translateY(0);
+}
+
+.container > .envelope-wrapper {
+	background: var(--bg-envelope-color);
+	box-shadow: 0 0 0 var(--shadow-color);
+	animation: envelope-shake 3s;
+	animation-timing-function: cubic-bezier(0.5, -0.01, 0.27, 0.89);
+	animation-iteration-count: 3;
+}
+
+.container > .envelope-wrapper:hover {
+	cursor: pointer;
+}
+
+.envelope-wrapper > .envelope {
+	position: relative;
+	width: 300px;
+	height: 230px;
+}
+.envelope-wrapper > .envelope::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	z-index: 2;
+	border-top: 130px solid var(--envelope-tab);
+	border-right: 150px solid transparent;
+	border-left: 150px solid transparent;
+	transform-origin: top;
+	transition: all 0.5s ease-in-out 0.7s;
+}
+.envelope-wrapper > .envelope::after {
+	content: '';
+	position: absolute;
+	z-index: 2;
+	width: 0px;
+	height: 0px;
+	border-top: 130px solid transparent;
+	border-right: 150px solid var(--envelope-cover);
+	border-bottom: 100px solid var(--envelope-cover);
+	border-left: 150px solid var(--envelope-cover);
+}
+.envelope > .letter {
+	position: absolute;
+	right: 20%;
+	bottom: 0;
+	width: 54%;
+	height: 80%;
+	background: var(--primary);
+	text-align: center;
+	transition: all 1s ease-in-out;
+	box-shadow: 0 0 5px var(--shadow-color);
+	padding: 20px 10px;
+}
+.envelope > .letter > .text {
+	font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS',
+		sans-serif;
+	color: var(--txt-color);
+	text-align: left;
+	font-size: 10px;
+}
+.heart {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 15px;
+	height: 15px;
+	background: var(--heart-color);
+	z-index: 4;
+	transform: translate(-50%, -20%) rotate(45deg);
+	transition: transform 0.5s ease-in-out 1s;
+	box-shadow: 0 1px 6px var(--shadow-color);
+	cursor: pointer;
+}
+.heart:before,
+.heart:after {
+	content: '';
+	position: absolute;
+	width: 15px;
+	height: 15px;
+	background-color: var(--heart-color);
+	border-radius: 50%;
+}
+.heart:before {
+	top: -7.5px;
+}
+.heart:after {
+	right: 7.5px;
+}
+.heart:active ~ .container {
+	transform: scale(1) translateY(0);
+}
+.flap > .envelope:before {
+	transform: rotateX(180deg);
+	z-index: 0;
+}
+.flap > .envelope > .letter {
+	bottom: 100px;
+	transform: scale(1.5);
+	transition-delay: 1s;
+}
+.flap > .heart {
+	transform: rotate(90deg);
+	transition-delay: 0.4s;
+}
 
 .grass-ground {
 	position: absolute;
@@ -45,7 +188,7 @@ body {
 }
 
 .grass-ground .shape-fill {
-	fill: rgb(37, 143, 37);
+	fill: url(#myGradient);
 }
 
 .flowers {
@@ -483,7 +626,6 @@ body {
 		display: flex;
 		flex-direction: column;
 		align-items: flex-end;
-		z-index: 20;
 		transform-origin: bottom center;
 		transform: rotate(-48deg) rotateY(40deg);
 
@@ -1111,7 +1253,7 @@ body {
 
 		&--2,
 		&--3 {
-			bottom: -20vmin;
+			bottom: 0;
 			left: -35vmin;
 			transform-origin: center;
 			transform: scale(0.6) rotateX(60deg);
@@ -1624,6 +1766,40 @@ body {
 		transform: scale(0);
 	}
 }
+
+@keyframes revolution {
+	from {
+		background-position: 0 0;
+	}
+	to {
+		background-position: 200% 0;
+	}
+}
+
+@keyframes envelope-fall {
+	0% {
+		top: -200%;
+	}
+	100% {
+		top: 0vh;
+	}
+}
+
+@keyframes envelope-shake {
+	0%,
+	100% {
+		transform: translateX(0);
+	}
+	50% {
+		transform: translateX(500px);
+	}
+}
+
+// .snowflake:nth-of-type(0) {
+// 	left: 1%;
+// 	-webkit-animation-delay: 0s, 0s;
+// 	animation-delay: 0s, 0s;
+// }
 
 .not-loaded * {
 	animation-play-state: paused !important;

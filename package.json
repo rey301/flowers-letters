@@ -1,0 +1,21 @@
+{
+  "name": "flowers-letters",
+  "version": "1.0.0",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rey301/flowers-letters.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/rey301/flowers-letters/issues"
+  },
+  "homepage": "https://github.com/rey301/flowers-letters#readme",
+  "description": ""
+}

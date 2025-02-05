@@ -16,6 +16,24 @@
 -->
 
 	<body class="not-loaded">
+		<div class="gradient"></div>
+		<div class="container">
+			<div class="envelope-wrapper">
+				<div class="envelope">
+					<div class="letter">
+						<div class="text">
+							<strong>Dear Jiayi,</strong>
+							<p>
+								look at these wonderful amazing beautiful
+								flowers hehehehheeh. will you be my valentine?
+								yes. no. maybe.
+							</p>
+						</div>
+					</div>
+				</div>
+				<div class="heart"></div>
+			</div>
+		</div>
 		<div class="grass-ground">
 			<svg
 				data-name="Layer 1"
@@ -27,9 +45,16 @@
 					d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"
 					class="shape-fill"
 				></path>
+				<defs>
+					<linearGradient id="myGradient">
+						<stop offset="20%" stop-color="#1F8E25" />
+						<stop offset="50%" stop-color="#1FD825" />
+					</linearGradient>
+				</defs>
 			</svg>
 		</div>
 		<div class="background"></div>
+
 		<div class="flowers">
 			<div class="flower flower--1">
 				<div class="flower__leafs flower__leafs--1">
@@ -590,5 +615,17 @@
 				</div>
 			</div>
 		</div>
+
+		<script>
+			const envelope = document.querySelector('.envelope-wrapper');
+			envelope.addEventListener('click', () => {
+				envelope.classList.toggle('flap');
+			});
+
+			const container = document.querySelector('.container');
+			container.addEventListener('click', () => {
+				container.classList.add('zoomed');
+			});
+		</script>
 	</body>
 </html>
