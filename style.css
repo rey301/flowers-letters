@@ -47,7 +47,6 @@ body {
   display: grid;
   place-items: center;
   transform: scale(0.6) translateY(55vh) translateX(20vh) rotateX(30deg) rotateY(20deg) rotate(-20deg);
-  transition: transform 0.5s ease-in-out;
   animation-name: envelope-fall;
   animation-duration: 9s;
   animation-timing-function: linear;
@@ -56,7 +55,12 @@ body {
 }
 
 .container.zoomed {
-  transform: scale(1) translateY(0);
+  transform: scale(1) translateY(0vh) translateX(-60vh) rotateX(0) rotateY(0deg) rotate(0deg);
+  transition: transform 0.5s linear;
+}
+
+.envelope-wrapper {
+  transform: none;
 }
 
 .container > .envelope-wrapper {
@@ -112,6 +116,15 @@ body {
   transition: all 1s ease-in-out;
   box-shadow: 0 0 5px var(--shadow-color);
   padding: 20px 10px;
+}
+
+.letter {
+  position: absolute;
+}
+
+.letter.open {
+  animation: take-out-letter 2s ease-in-out forwards;
+  transition: transform 1s linear;
 }
 
 .envelope > .letter > .text {
@@ -1289,7 +1302,7 @@ body {
     top: -200%;
   }
   100% {
-    top: 0vh;
+    top: 0%;
   }
 }
 @keyframes envelope-shake {
@@ -1298,6 +1311,24 @@ body {
   }
   50% {
     transform: translateX(500px);
+  }
+}
+@keyframes take-out-letter {
+  0% {
+    opacity: 1;
+  }
+  20% {
+    transform: translateY(-80%);
+    transition: transform 2s;
+    z-index: 100;
+  }
+  100% {
+    transform: scale(2.5) translate(49vh, 5vh);
+    cursor: default;
+    height: 300px;
+    width: 200px;
+    z-index: 100;
+    opacity: 1;
   }
 }
 .not-loaded * {
