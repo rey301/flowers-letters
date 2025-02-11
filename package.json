@@ -17,5 +17,8 @@
     "url": "https://github.com/rey301/flowers-letters/issues"
   },
   "homepage": "https://github.com/rey301/flowers-letters#readme",
-  "description": ""
+  "description": "",
+  "dependencies": {
+    "jquery": "^3.7.1"
+  }
 }

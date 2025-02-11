@@ -115,12 +115,12 @@ body {
 	right: 20%;
 	bottom: 0;
 	width: 54%;
-	height: 80%;
+	height: 100%;
 	background: var(--primary);
 	text-align: center;
 	transition: all 1s ease-in-out;
 	box-shadow: 0 0 5px var(--shadow-color);
-	padding: 20px 10px;
+	padding: 20px 20px;
 }
 
 .letter {
@@ -145,12 +145,60 @@ body {
 // }
 
 .envelope > .letter > .text {
-	font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS',
-		sans-serif;
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	height: 100%;
+	font-family: segoe script;
 	color: var(--txt-color);
 	text-align: left;
-	font-size: 10px;
+	font-size: 0.48em;
 }
+
+.que {
+	align-self: center;
+}
+
+strong {
+	font-size: 9px;
+}
+
+.decision {
+	margin-top: 20px;
+	display: flex;
+	height: 10px;
+	justify-content: center;
+	align-items: center;
+}
+
+/* Marker styling */
+.marker {
+	position: relative;
+	margin: 0 40px;
+	color: #333;
+	text-decoration: none;
+	//line-height: 1em;
+	& svg {
+		position: absolute;
+		left: 0;
+		top: -50%;
+		right: 0;
+		margin-left: auto;
+		margin-right: auto;
+		pointer-events: none;
+	}
+	& path {
+		transition: stroke-dashoffset 300ms linear;
+		stroke-width: 0.4;
+		stroke: darkgreen;
+		fill: none;
+		stroke-linecap: round;
+	}
+	&:hover path {
+		stroke-dashoffset: 0;
+	}
+}
+
 .heart {
 	position: absolute;
 	top: 50%;
@@ -1830,7 +1878,7 @@ body {
 		z-index: 100;
 	}
 	100% {
-		transform: scale(2.5) translate(49vh, 5vh);
+		transform: scale(2.5) translate(0vh, 5vh);
 		cursor: default;
 		height: 300px;
 		width: 200px;
@@ -1838,12 +1886,6 @@ body {
 		opacity: 1;
 	}
 }
-
-// .snowflake:nth-of-type(0) {
-// 	left: 1%;
-// 	-webkit-animation-delay: 0s, 0s;
-// 	animation-delay: 0s, 0s;
-// }
 
 .not-loaded * {
 	animation-play-state: paused !important;

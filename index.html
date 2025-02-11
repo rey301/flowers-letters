@@ -4,6 +4,7 @@
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link rel="stylesheet" href="style.css" />
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 		<script src="script.js" defer></script>
 		<title>For you!!!!</title>
 	</head>
@@ -22,17 +23,29 @@
 				<div class="envelope">
 					<div class="letter">
 						<div class="text">
-							<strong>Dear Jiayi,</strong>
-							<p>
-								You’re such an amazing wonderful person who
-								deserves everything and I’m so lucky that I’m
-								with you. I care so so much about you and
-								there’s nothing else in the world that makes me
-								want to stop loving you. I can’t wait for you to
-								be back and we can do our couple things together
-								hehe. SO here’s the big question: Will you be my
-								valentine?
-							</p>
+							<div>
+								<strong
+									>Dear my lil sparkly sunflower🌻,</strong
+								>
+								<p>
+									You're an amazing wonderful person who
+									deserves everything and I’m so lucky that
+									I’m with you. I care so so much about you
+									and there’s nothing else in the world that
+									makes me want to stop loving you. I can’t
+									wait for you to be back and we can do our
+									couple things together hehe. I know I
+									haven't done my best recently but I want and
+									will do more romantic things for you!
+									<br /><br />SO here's the question (click
+									yes for a ✨surprise✨ date):
+								</p>
+							</div>
+							<div class="que">Will you be my valentine?</div>
+							<div class="decision">
+								<a href="#" class="marker"> Yes </a>
+								<a href="#" class="marker"> No </a>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -620,24 +633,5 @@
 				</div>
 			</div>
 		</div>
-
-		<script>
-			const envelope = document.querySelector('.envelope-wrapper');
-			envelope.addEventListener('click', () => {
-				envelope.classList.add('flap');
-			});
-
-			const container = document.querySelector('.container');
-			container.addEventListener('click', () => {
-				container.classList.add('zoomed');
-			});
-
-			const letter = document.querySelector('.letter');
-			letter.addEventListener('click', () => {
-				temp = letter;
-				letter.classList.add('open');
-				envelope.classList.toggle('flap');
-			});
-		</script>
 	</body>
 </html>
