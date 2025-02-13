@@ -1,7 +1,7 @@
 jQuery(function () {
 	var markers = $('.marker'); // marker selector
-	var widthGain = 4; // 1 default
-	var heightGain = 2; // 1 default
+	var widthGain = 1; // 1 default
+	var heightGain = 1; // 1 default
 
 	// repeat for all markers
 	markers.each(function () {
@@ -120,6 +120,13 @@ letter.addEventListener('click', () => {
 	temp = letter;
 	letter.classList.add('open');
 	envelope.classList.toggle('flap');
+});
+
+const letterInner = document.querySelector('.letter-inner');
+const yes = document.getElementById('yes');
+yes.addEventListener('click', () => {
+	letterInner.classList.add('flip');
+	letter.classList.add('flip');
 });
 
 onload = () => {
