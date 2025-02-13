@@ -1402,10 +1402,10 @@ strong {
     z-index: 100;
   }
   100% {
-    transform: scale(2.5) translate(0, 5vh);
+    transform: scale(2.5) translate(2vh, 5vh);
     cursor: default;
-    height: 300px;
-    width: 200px;
+    height: 130%;
+    width: 80%;
     z-index: 100;
   }
 }
